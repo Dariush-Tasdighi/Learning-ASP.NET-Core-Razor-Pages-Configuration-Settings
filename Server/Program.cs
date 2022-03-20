@@ -25,56 +25,56 @@
 // **************************************************
 // Learn 1
 // **************************************************
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.AspNetCore.Builder;
+//using Microsoft.Extensions.DependencyInjection;
 
-// **************************************************
-var webApplicationOptions =
-	new Microsoft.AspNetCore.Builder.WebApplicationOptions
-	{
-		//EnvironmentName =
-		//	Microsoft.Extensions.Hosting.Environments.Production,
+//// **************************************************
+//var webApplicationOptions =
+//	new Microsoft.AspNetCore.Builder.WebApplicationOptions
+//	{
+//		//EnvironmentName =
+//		//	Microsoft.Extensions.Hosting.Environments.Production,
 
-		EnvironmentName =
-			Microsoft.Extensions.Hosting.Environments.Development,
-	};
+//		EnvironmentName =
+//			Microsoft.Extensions.Hosting.Environments.Development,
+//	};
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(options: webApplicationOptions);
-// **************************************************
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(options: webApplicationOptions);
+//// **************************************************
 
-// **************************************************
-var password =
-	builder.Configuration
-	.GetSection(key: "password").Value;
+//// **************************************************
+//var password =
+//	builder.Configuration
+//	.GetSection(key: "password").Value;
 
-var emailAddress =
-	builder.Configuration
-	.GetSection(key: "EmailAddress").Value;
-// **************************************************
+//var emailAddress =
+//	builder.Configuration
+//	.GetSection(key: "EmailAddress").Value;
+//// **************************************************
 
-// **************************************************
-var adminEmailAddress1 =
-	builder.Configuration
-	.GetSection(key: "Admin")
-	.GetSection(key: "EmailAddress").Value;
+//// **************************************************
+//var adminEmailAddress1 =
+//	builder.Configuration
+//	.GetSection(key: "Admin")
+//	.GetSection(key: "EmailAddress").Value;
 
-var adminEmailAddress2 =
-	builder.Configuration
-	.GetSection(key: "Admin:EmailAddress").Value;
-// **************************************************
+//var adminEmailAddress2 =
+//	builder.Configuration
+//	.GetSection(key: "Admin:EmailAddress").Value;
+//// **************************************************
 
-// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
-builder.Services.AddRazorPages();
+//// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
+//builder.Services.AddRazorPages();
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
-app.MapRazorPages();
+//// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
+//app.MapRazorPages();
 
-app.Run();
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -101,14 +101,21 @@ app.Run();
 //// **************************************************
 
 //// **************************************************
+//// در نوشتن کلید بی‌دقتی می‌کنم
+//// Configure() -> using Microsoft.Extensions.DependencyInjection;
+////builder.Services.Configure
+////	<Infrastructure.Settings.AdminSettings>
+////	(builder.Configuration.GetSection(key: "AdminSetting"));
+
+//// Configure() -> using Microsoft.Extensions.DependencyInjection;
+////builder.Services.Configure
+////	<Infrastructure.Settings.AdminSettings>
+////	(builder.Configuration.GetSection(key: "AdminSettings"));
+
 //// Configure() -> using Microsoft.Extensions.DependencyInjection;
 //builder.Services.Configure
 //	<Infrastructure.Settings.AdminSettings>
-//	(builder.Configuration.GetSection(key: "AdminSetting"));
-
-////builder.Services.Configure
-////	<Infrastructure.Settings.AdminSetting>
-////	(builder.Configuration.GetSection(key: Infrastructure.Settings.AdminSetting.KeyName));
+//	(builder.Configuration.GetSection(key: Infrastructure.Settings.AdminSettings.KeyName));
 //// **************************************************
 
 //// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
@@ -133,56 +140,56 @@ app.Run();
 // 1. Inject in View
 // 2. در همین محل Strongly Typed Setting استفاده از شیء
 // **************************************************
-//using Microsoft.AspNetCore.Builder;
-//using Microsoft.Extensions.Configuration;
-//using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
-//// **************************************************
-//var webApplicationOptions =
-//	new Microsoft.AspNetCore.Builder.WebApplicationOptions
-//	{
-//		EnvironmentName =
-//			Microsoft.Extensions.Hosting.Environments.Development,
-//	};
+// **************************************************
+var webApplicationOptions =
+	new Microsoft.AspNetCore.Builder.WebApplicationOptions
+	{
+		EnvironmentName =
+			Microsoft.Extensions.Hosting.Environments.Development,
+	};
 
-//var builder =
-//	Microsoft.AspNetCore.Builder
-//	.WebApplication.CreateBuilder(options: webApplicationOptions);
-//// **************************************************
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(options: webApplicationOptions);
+// **************************************************
 
-//// **************************************************
-//// Configure() -> using Microsoft.Extensions.DependencyInjection;
-//builder.Services.Configure
-//	<Infrastructure.Settings.AdminSetting>
-//	(builder.Configuration.GetSection(key: Infrastructure.Settings.AdminSetting.KeyName));
-//// **************************************************
+// **************************************************
+// Configure() -> using Microsoft.Extensions.DependencyInjection;
+builder.Services.Configure
+	<Infrastructure.Settings.AdminSettings>
+	(builder.Configuration.GetSection(key: Infrastructure.Settings.AdminSettings.KeyName));
+// **************************************************
 
-//// **************************************************
-//// دستور ذیل کار نمی‌کند
-////Infrastructure.Settings.AdminSetting? adminSetting = null;
+// **************************************************
+// دستور ذیل کار نمی‌کند
+//Infrastructure.Settings.AdminSettings? adminSettings = null;
 
-//var adminSetting =
-//	new Infrastructure.Settings.AdminSetting();
+var adminSettings =
+	new Infrastructure.Settings.AdminSettings();
 
-//// Bind() -> using Microsoft.Extensions.Configuration;
-//builder.Configuration.GetSection
-//	(key: Infrastructure.Settings.AdminSetting.KeyName)
-//	.Bind(instance: adminSetting);
+// Bind() -> using Microsoft.Extensions.Configuration;
+builder.Configuration.GetSection
+	(key: Infrastructure.Settings.AdminSettings.KeyName)
+	.Bind(instance: adminSettings);
 
-//int age =
-//	adminSetting.Age;
-//// **************************************************
+int age =
+	adminSettings.Age;
+// **************************************************
 
-//// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
-//builder.Services.AddRazorPages();
+// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
+builder.Services.AddRazorPages();
 
-//var app =
-//	builder.Build();
+var app =
+	builder.Build();
 
-//// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
-//app.MapRazorPages();
+// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
+app.MapRazorPages();
 
-//app.Run();
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
