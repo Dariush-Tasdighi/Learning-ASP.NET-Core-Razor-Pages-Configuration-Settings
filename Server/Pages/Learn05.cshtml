@@ -19,12 +19,12 @@ Age: @(Model.ApplicationSettings.ActivationKey)
 	Cultures
 </h5>
 
-Default Culture: @(Model.ApplicationSettings.CultureSettings.DefaultCulture)
+Default Culture: @(Model.ApplicationSettings.CultureSettings.DefaultCultureName)
 <br />
-Supported Cultures:
-@if (Model.ApplicationSettings.CultureSettings.SupportedCultures != null)
+Supported Culture Names:
+@if (Model.ApplicationSettings.CultureSettings.SupportedCultureNames != null)
 {
-	foreach (var item in Model.ApplicationSettings.CultureSettings.SupportedCultures)
+	foreach (var item in Model.ApplicationSettings.CultureSettings.SupportedCultureNames)
 	{
 		@(item)
 		@:&nbsp;

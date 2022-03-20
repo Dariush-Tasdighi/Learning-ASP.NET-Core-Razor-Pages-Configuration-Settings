@@ -6,8 +6,8 @@
 		{
 		}
 
-		public string? DefaultCulture { get; set; }
+		public string? DefaultCultureName { get; set; }
 
-		public string[]? SupportedCultures { get; set; }
+		public string[]? SupportedCultureNames { get; set; }
 	}
 }

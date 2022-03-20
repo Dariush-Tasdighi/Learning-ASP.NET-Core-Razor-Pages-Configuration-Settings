@@ -20,6 +20,8 @@
 // **************************************************
 // **************************************************
 
+
+
 // **************************************************
 // **************************************************
 // **************************************************
@@ -79,6 +81,8 @@
 // **************************************************
 // **************************************************
 
+
+
 // **************************************************
 // **************************************************
 // **************************************************
@@ -132,6 +136,8 @@
 // **************************************************
 // **************************************************
 
+
+
 // **************************************************
 // **************************************************
 // **************************************************
@@ -139,67 +145,6 @@
 // **************************************************
 // 1. Inject in View
 // 2. در همین محل Strongly Typed Setting استفاده از شیء
-// **************************************************
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-
-// **************************************************
-var webApplicationOptions =
-	new Microsoft.AspNetCore.Builder.WebApplicationOptions
-	{
-		EnvironmentName =
-			Microsoft.Extensions.Hosting.Environments.Development,
-	};
-
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(options: webApplicationOptions);
-// **************************************************
-
-// **************************************************
-// Configure() -> using Microsoft.Extensions.DependencyInjection;
-builder.Services.Configure
-	<Infrastructure.Settings.AdminSettings>
-	(builder.Configuration.GetSection(key: Infrastructure.Settings.AdminSettings.KeyName));
-// **************************************************
-
-// **************************************************
-// دستور ذیل کار نمی‌کند
-//Infrastructure.Settings.AdminSettings? adminSettings = null;
-
-var adminSettings =
-	new Infrastructure.Settings.AdminSettings();
-
-// Bind() -> using Microsoft.Extensions.Configuration;
-builder.Configuration.GetSection
-	(key: Infrastructure.Settings.AdminSettings.KeyName)
-	.Bind(instance: adminSettings);
-
-int age =
-	adminSettings.Age;
-// **************************************************
-
-// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
-builder.Services.AddRazorPages();
-
-var app =
-	builder.Build();
-
-// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
-app.MapRazorPages();
-
-app.Run();
-// **************************************************
-// **************************************************
-// **************************************************
-
-// **************************************************
-// **************************************************
-// **************************************************
-// Learn 4
-// **************************************************
-// 1) Learning ConfigureAppConfiguration
 // **************************************************
 //using Microsoft.AspNetCore.Builder;
 //using Microsoft.Extensions.Configuration;
@@ -218,40 +163,26 @@ app.Run();
 //	.WebApplication.CreateBuilder(options: webApplicationOptions);
 //// **************************************************
 
-//builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
-//{
-//	// **************************************************
-//	config.Sources.Clear();
-
-//	var env =
-//		hostingContext.HostingEnvironment;
-
-//	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
-//	config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-//	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
-//	config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
-//	// **************************************************
-
-//	// **************************************************
-//	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
-//	config.AddJsonFile("mysettings.json", optional: true, reloadOnChange: true);
-
-//	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
-//	config.AddJsonFile($"mysettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
-//	// **************************************************
-//});
-
 //// **************************************************
 //// Configure() -> using Microsoft.Extensions.DependencyInjection;
-//builder.Services.Configure
-//	<Infrastructure.Settings.AdminSettings>
+//builder.Services.Configure<Infrastructure.Settings.AdminSettings>
 //	(builder.Configuration.GetSection(key: Infrastructure.Settings.AdminSettings.KeyName));
+//// **************************************************
 
-//// Configure() -> using Microsoft.Extensions.DependencyInjection;
-//builder.Services.Configure
-//	<Infrastructure.Settings.MyAdminSettings>
-//	(builder.Configuration.GetSection(key: Infrastructure.Settings.MyAdminSettings.KeyName));
+//// **************************************************
+//// دستور ذیل کار نمی‌کند
+////Infrastructure.Settings.AdminSettings? adminSettings = null;
+
+//var adminSettings =
+//	new Infrastructure.Settings.AdminSettings();
+
+//// Bind() -> using Microsoft.Extensions.Configuration;
+//builder.Configuration.GetSection
+//	(key: Infrastructure.Settings.AdminSettings.KeyName)
+//	.Bind(instance: adminSettings);
+
+//int age =
+//	adminSettings.Age;
 //// **************************************************
 
 //// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
@@ -267,6 +198,84 @@ app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
+
+
+
+// **************************************************
+// **************************************************
+// **************************************************
+// Learn 4
+// **************************************************
+// 1) Learning ConfigureAppConfiguration
+// **************************************************
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+// **************************************************
+var webApplicationOptions =
+	new Microsoft.AspNetCore.Builder.WebApplicationOptions
+	{
+		EnvironmentName =
+			Microsoft.Extensions.Hosting.Environments.Development,
+	};
+
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(options: webApplicationOptions);
+// **************************************************
+
+builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+{
+	// **************************************************
+	config.Sources.Clear();
+
+	var env =
+		hostingContext.HostingEnvironment;
+
+	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
+	config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
+	config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+	// **************************************************
+
+	// **************************************************
+	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
+	config.AddJsonFile("mysettings.json", optional: true, reloadOnChange: true);
+
+	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
+	config.AddJsonFile($"mysettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+	// **************************************************
+});
+
+// **************************************************
+// Configure() -> using Microsoft.Extensions.DependencyInjection;
+builder.Services.Configure
+	<Infrastructure.Settings.AdminSettings>
+	(builder.Configuration.GetSection(key: Infrastructure.Settings.AdminSettings.KeyName));
+
+// Configure() -> using Microsoft.Extensions.DependencyInjection;
+builder.Services.Configure
+	<Infrastructure.Settings.MyAdminSettings>
+	(builder.Configuration.GetSection(key: Infrastructure.Settings.MyAdminSettings.KeyName));
+// **************************************************
+
+// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
+builder.Services.AddRazorPages();
+
+var app =
+	builder.Build();
+
+// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
+app.MapRazorPages();
+
+app.Run();
+// **************************************************
+// **************************************************
+// **************************************************
+
+
 
 // **************************************************
 // **************************************************
