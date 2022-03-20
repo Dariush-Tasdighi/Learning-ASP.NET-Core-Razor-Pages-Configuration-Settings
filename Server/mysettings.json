@@ -1,0 +1,9 @@
+{
+	"MyAdminSettings": {
+		"Age": 51,
+		"IsActive": true,
+		"Salary": 456.123,
+		"FullName": "Mr. Dariush Tasdighi",
+		"FavoriteColors": [ "Red", "Green" ]
+	}
+}

@@ -1,0 +1,34 @@
+﻿@page
+@model Server.Pages.Learn05Model
+
+<h3>
+	Learn 5
+</h3>
+
+<hr />
+
+Age: @(Model.ApplicationSettings.ActivationKey)
+<br />
+
+@if (Model.ApplicationSettings.CultureSettings == null)
+{
+	return;
+}
+
+<h5>
+	Cultures
+</h5>
+
+Default Culture: @(Model.ApplicationSettings.CultureSettings.DefaultCulture)
+<br />
+Supported Cultures:
+@if (Model.ApplicationSettings.CultureSettings.SupportedCultures != null)
+{
+	foreach (var item in Model.ApplicationSettings.CultureSettings.SupportedCultures)
+	{
+		@(item)
+		@:&nbsp;
+	}
+}
+
+<hr />

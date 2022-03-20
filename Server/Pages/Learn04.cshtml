@@ -1,0 +1,56 @@
+﻿@page
+@model Server.Pages.Learn04Model
+
+<h3>
+	Learn 4
+</h3>
+
+<hr />
+
+<h5>
+	Admin Settings
+</h5>
+
+Age: @(Model.AdminSettings.Age)
+<br />
+Is Active: @(Model.AdminSettings.IsActive)
+<br />
+Salary: @(Model.AdminSettings.Salary)
+<br />
+Full Name: @(Model.AdminSettings.FullName)
+<br />
+Favorite Colors:
+@if (Model.AdminSettings.FavoriteColors != null)
+{
+	foreach (var item in Model.AdminSettings.FavoriteColors)
+	{
+		@(item)
+		@:&nbsp;
+	}
+}
+
+<hr />
+
+<h5>
+	My Admin Settings
+</h5>
+
+Age: @(Model.MyAdminSettings.Age)
+<br />
+Is Active: @(Model.MyAdminSettings.IsActive)
+<br />
+Salary: @(Model.MyAdminSettings.Salary)
+<br />
+Full Name: @(Model.MyAdminSettings.FullName)
+<br />
+Favorite Colors:
+@if (Model.MyAdminSettings.FavoriteColors != null)
+{
+	foreach (var item in Model.MyAdminSettings.FavoriteColors)
+	{
+		@(item)
+		@:&nbsp;
+	}
+}
+
+<hr />

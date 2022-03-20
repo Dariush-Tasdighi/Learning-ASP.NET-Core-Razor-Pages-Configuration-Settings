@@ -1,0 +1,34 @@
+﻿@page
+@model Server.Pages.Learn03Model
+@inject Microsoft.Extensions.Options.IOptions<Infrastructure.Settings.AdminSettings> adminSettingsOptions
+
+@{
+	var adminSettings =
+		adminSettingsOptions.Value;
+}
+
+<h3>
+	Learn 3
+</h3>
+
+<hr />
+
+Age: @(adminSettings.Age)
+<br />
+Is Active: @(adminSettings.IsActive)
+<br />
+Salary: @(adminSettings.Salary)
+<br />
+Full Name: @(adminSettings.FullName)
+<br />
+Favorite Colors:
+@if (adminSettings.FavoriteColors != null)
+{
+	foreach (var item in adminSettings.FavoriteColors)
+	{
+		@(item)
+		@:&nbsp;
+	}
+}
+
+<hr />

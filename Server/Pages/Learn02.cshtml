@@ -1,0 +1,28 @@
+﻿@page
+@model Server.Pages.Learn02Model
+
+<h3>
+	Learn 2
+</h3>
+
+<hr />
+
+Age: @(Model.AdminSettings.Age)
+<br />
+Is Active: @(Model.AdminSettings.IsActive)
+<br />
+Salary: @(Model.AdminSettings.Salary)
+<br />
+Full Name: @(Model.AdminSettings.FullName)
+<br />
+Favorite Colors:
+@if (Model.AdminSettings.FavoriteColors != null)
+{
+	foreach (var item in Model.AdminSettings.FavoriteColors)
+	{
+		@(item)
+		@:&nbsp;
+	}
+}
+
+<hr />
