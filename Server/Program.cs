@@ -3,19 +3,19 @@
 // **************************************************
 // Default
 // **************************************************
-using Microsoft.AspNetCore.Builder;
+//using Microsoft.AspNetCore.Builder;
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(args);
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args);
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-// MapGet() -> using Microsoft.AspNetCore.Builder;
-app.MapGet("/", () => "Hello World!");
+//// MapGet() -> using Microsoft.AspNetCore.Builder;
+//app.MapGet("/", () => "Hello World!");
 
-app.Run();
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -25,56 +25,56 @@ app.Run();
 // **************************************************
 // Learn 1
 // **************************************************
-//using Microsoft.AspNetCore.Builder;
-//using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
-//// **************************************************
-//var webApplicationOptions =
-//	new Microsoft.AspNetCore.Builder.WebApplicationOptions
-//	{
-//		EnvironmentName =
-//			Microsoft.Extensions.Hosting.Environments.Development,
+// **************************************************
+var webApplicationOptions =
+	new Microsoft.AspNetCore.Builder.WebApplicationOptions
+	{
+		//EnvironmentName =
+		//	Microsoft.Extensions.Hosting.Environments.Production,
 
-//		//EnvironmentName =
-//		//	Microsoft.Extensions.Hosting.Environments.Production,
-//	};
+		EnvironmentName =
+			Microsoft.Extensions.Hosting.Environments.Development,
+	};
 
-//var builder =
-//	Microsoft.AspNetCore.Builder
-//	.WebApplication.CreateBuilder(options: webApplicationOptions);
-//// **************************************************
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(options: webApplicationOptions);
+// **************************************************
 
-//// **************************************************
-//var password =
-//	builder.Configuration
-//	.GetSection(key: "password").Value;
+// **************************************************
+var password =
+	builder.Configuration
+	.GetSection(key: "password").Value;
 
-//var emailAddress =
-//	builder.Configuration
-//	.GetSection(key: "EmailAddress").Value;
-//// **************************************************
+var emailAddress =
+	builder.Configuration
+	.GetSection(key: "EmailAddress").Value;
+// **************************************************
 
-//// **************************************************
-//var adminEmailAddress1 =
-//	builder.Configuration
-//	.GetSection(key: "Admin")
-//	.GetSection(key: "EmailAddress").Value;
+// **************************************************
+var adminEmailAddress1 =
+	builder.Configuration
+	.GetSection(key: "Admin")
+	.GetSection(key: "EmailAddress").Value;
 
-//var adminEmailAddress2 =
-//	builder.Configuration
-//	.GetSection(key: "Admin:EmailAddress").Value;
-//// **************************************************
+var adminEmailAddress2 =
+	builder.Configuration
+	.GetSection(key: "Admin:EmailAddress").Value;
+// **************************************************
 
-//// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
-//builder.Services.AddRazorPages();
+// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
+builder.Services.AddRazorPages();
 
-//var app =
-//	builder.Build();
+var app =
+	builder.Build();
 
-//// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
-//app.MapRazorPages();
+// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
+app.MapRazorPages();
 
-//app.Run();
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -103,7 +103,7 @@ app.Run();
 //// **************************************************
 //// Configure() -> using Microsoft.Extensions.DependencyInjection;
 //builder.Services.Configure
-//	<Infrastructure.Settings.AdminSetting>
+//	<Infrastructure.Settings.AdminSettings>
 //	(builder.Configuration.GetSection(key: "AdminSetting"));
 
 ////builder.Services.Configure
