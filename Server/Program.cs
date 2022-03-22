@@ -3,19 +3,19 @@
 // **************************************************
 // Default
 // **************************************************
-//using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 
-//var builder =
-//	Microsoft.AspNetCore.Builder
-//	.WebApplication.CreateBuilder(args);
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(args);
 
-//var app =
-//	builder.Build();
+var app =
+	builder.Build();
 
-//// MapGet() -> using Microsoft.AspNetCore.Builder;
-//app.MapGet("/", () => "Hello World!");
+// MapGet() -> using Microsoft.AspNetCore.Builder;
+app.MapGet("/", () => "Hello World!");
 
-//app.Run();
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -208,69 +208,74 @@
 // **************************************************
 // 1) Learning ConfigureAppConfiguration
 // **************************************************
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.AspNetCore.Builder;
+//using Microsoft.Extensions.Configuration;
+//using Microsoft.Extensions.DependencyInjection;
 
-// **************************************************
-var webApplicationOptions =
-	new Microsoft.AspNetCore.Builder.WebApplicationOptions
-	{
-		EnvironmentName =
-			Microsoft.Extensions.Hosting.Environments.Development,
-	};
+//// **************************************************
+//var webApplicationOptions =
+//	new Microsoft.AspNetCore.Builder.WebApplicationOptions
+//	{
+//		EnvironmentName =
+//			Microsoft.Extensions.Hosting.Environments.Development,
+//	};
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(options: webApplicationOptions);
-// **************************************************
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(options: webApplicationOptions);
+//// **************************************************
 
-builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
-{
-	// **************************************************
-	config.Sources.Clear();
+//builder.Host.ConfigureAppConfiguration((hostingContext, config) =>
+//{
+//	// **************************************************
+//	config.Sources.Clear();
 
-	var env =
-		hostingContext.HostingEnvironment;
+//	var env =
+//		hostingContext.HostingEnvironment;
 
-	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
-	config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+//	// **************************************************
+//	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
+//	config.AddJsonFile
+//		("appsettings.json", optional: true, reloadOnChange: true);
 
-	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
-	config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
-	// **************************************************
+//	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
+//	config.AddJsonFile
+//		($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+//	// **************************************************
 
-	// **************************************************
-	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
-	config.AddJsonFile("mysettings.json", optional: true, reloadOnChange: true);
+//	// **************************************************
+//	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
+//	config.AddJsonFile
+//		("mysettings.json", optional: true, reloadOnChange: true);
 
-	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
-	config.AddJsonFile($"mysettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
-	// **************************************************
-});
+//	// AddJsonFile() -> using Microsoft.Extensions.Configuration;
+//	config.AddJsonFile
+//		($"mysettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+//	// **************************************************
+//});
 
-// **************************************************
-// Configure() -> using Microsoft.Extensions.DependencyInjection;
-builder.Services.Configure
-	<Infrastructure.Settings.AdminSettings>
-	(builder.Configuration.GetSection(key: Infrastructure.Settings.AdminSettings.KeyName));
+//// **************************************************
+//// Configure() -> using Microsoft.Extensions.DependencyInjection;
+//builder.Services.Configure
+//	<Infrastructure.Settings.AdminSettings>
+//	(builder.Configuration.GetSection(key: Infrastructure.Settings.AdminSettings.KeyName));
 
-// Configure() -> using Microsoft.Extensions.DependencyInjection;
-builder.Services.Configure
-	<Infrastructure.Settings.MyAdminSettings>
-	(builder.Configuration.GetSection(key: Infrastructure.Settings.MyAdminSettings.KeyName));
-// **************************************************
+//// Configure() -> using Microsoft.Extensions.DependencyInjection;
+//builder.Services.Configure
+//	<Infrastructure.Settings.MyAdminSettings>
+//	(builder.Configuration.GetSection(key: Infrastructure.Settings.MyAdminSettings.KeyName));
+//// **************************************************
 
-// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
-builder.Services.AddRazorPages();
+//// AddRazorPages() -> using Microsoft.Extensions.DependencyInjection;
+//builder.Services.AddRazorPages();
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
-app.MapRazorPages();
+//// MapRazorPages() -> using Microsoft.AspNetCore.Builder;
+//app.MapRazorPages();
 
-app.Run();
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************

@@ -5,15 +5,15 @@ namespace Server.Pages
 	{
 		public Learn04Model
 			(Microsoft.Extensions.Options
-			.IOptions<Infrastructure.Settings.AdminSettings> adminSettingOptions,
+			.IOptions<Infrastructure.Settings.AdminSettings> adminSettingsOptions,
 			Microsoft.Extensions.Options
-			.IOptions<Infrastructure.Settings.MyAdminSettings> myAdminSettingOptions) : base()
+			.IOptions<Infrastructure.Settings.MyAdminSettings> myAdminSettingsOptions) : base()
 		{
 			AdminSettings =
-				adminSettingOptions.Value;
+				adminSettingsOptions.Value;
 
 			MyAdminSettings =
-				myAdminSettingOptions.Value;
+				myAdminSettingsOptions.Value;
 		}
 
 		public Infrastructure.Settings.AdminSettings AdminSettings { get; }
