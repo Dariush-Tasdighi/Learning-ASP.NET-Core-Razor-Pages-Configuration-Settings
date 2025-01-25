@@ -1,27 +1,27 @@
-namespace Server.Pages
+using Infrastructure.Settings;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Options;
+
+namespace Server.Pages;
+
+public class Learn04Model : PageModel
 {
-	public class Learn04Model :
-		Microsoft.AspNetCore.Mvc.RazorPages.PageModel
+	public Learn04Model
+		(IOptions<AdminSettings> adminSettingsOptions,
+		IOptions<MyAdminSettings> myAdminSettingsOptions) : base()
 	{
-		public Learn04Model
-			(Microsoft.Extensions.Options
-			.IOptions<Infrastructure.Settings.AdminSettings> adminSettingsOptions,
-			Microsoft.Extensions.Options
-			.IOptions<Infrastructure.Settings.MyAdminSettings> myAdminSettingsOptions) : base()
-		{
-			AdminSettings =
-				adminSettingsOptions.Value;
+		AdminSettings =
+			adminSettingsOptions.Value;
 
-			MyAdminSettings =
-				myAdminSettingsOptions.Value;
-		}
+		MyAdminSettings =
+			myAdminSettingsOptions.Value;
+	}
 
-		public Infrastructure.Settings.AdminSettings AdminSettings { get; }
+	public AdminSettings AdminSettings { get; }
 
-		public Infrastructure.Settings.MyAdminSettings MyAdminSettings { get; }
+	public MyAdminSettings MyAdminSettings { get; }
 
-		public void OnGet()
-		{
-		}
+	public void OnGet()
+	{
 	}
 }

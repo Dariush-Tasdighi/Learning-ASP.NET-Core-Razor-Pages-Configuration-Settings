@@ -1,19 +1,20 @@
-namespace Server.Pages
+using Infrastructure.Settings;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Server.Pages;
+
+public class Learn02Model : PageModel
 {
-	public class Learn02Model :
-		Microsoft.AspNetCore.Mvc.RazorPages.PageModel
+	public Learn02Model(IOptions<AdminSettings> adminSettingsOptions) : base()
 	{
-		public Learn02Model(Microsoft.Extensions.Options
-			.IOptions<Infrastructure.Settings.AdminSettings> adminSettingsOptions) : base()
-		{
-			AdminSettings =
-				adminSettingsOptions.Value;
-		}
+		AdminSettings =
+			adminSettingsOptions.Value;
+	}
 
-		public Infrastructure.Settings.AdminSettings AdminSettings { get; }
+	public AdminSettings AdminSettings { get; init; }
 
-		public void OnGet()
-		{
-		}
+	public void OnGet()
+	{
 	}
 }

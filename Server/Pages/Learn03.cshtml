@@ -1,6 +1,10 @@
 ﻿@page
+
+@using Infrastructure.Settings
+@using Microsoft.Extensions.Options
+
 @model Server.Pages.Learn03Model
-@inject Microsoft.Extensions.Options.IOptions<Infrastructure.Settings.AdminSettings> adminSettingsOptions
+@inject IOptions<AdminSettings> adminSettingsOptions
 
 @{
 	var adminSettings =

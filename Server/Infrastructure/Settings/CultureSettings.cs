@@ -1,13 +1,12 @@
-﻿namespace Infrastructure.Settings
+﻿namespace Infrastructure.Settings;
+
+public class CultureSettings : object
 {
-	public class CultureSettings : object
+	public CultureSettings() : base()
 	{
-		public CultureSettings() : base()
-		{
-		}
-
-		public string? DefaultCultureName { get; set; }
-
-		public string[]? SupportedCultureNames { get; set; }
 	}
+
+	public string? DefaultCultureName { get; set; }
+
+	public string[]? SupportedCultureNames { get; set; }
 }

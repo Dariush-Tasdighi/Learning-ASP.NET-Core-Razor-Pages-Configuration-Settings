@@ -1,19 +1,20 @@
-namespace Server.Pages
+using Infrastructure.Settings;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Server.Pages;
+
+public class Learn05Model : PageModel
 {
-	public class Learn05Model :
-		Microsoft.AspNetCore.Mvc.RazorPages.PageModel
+	public Learn05Model(IOptions<ApplicationSettings> applicationSettingsOptions) : base()
 	{
-		public Learn05Model(Microsoft.Extensions.Options.IOptions
-			<Infrastructure.Settings.ApplicationSettings> applicationSettingsOptions) : base()
-		{
-			ApplicationSettings =
-				applicationSettingsOptions.Value;
-		}
+		ApplicationSettings =
+			applicationSettingsOptions.Value;
+	}
 
-		public Infrastructure.Settings.ApplicationSettings ApplicationSettings { get; }
+	public ApplicationSettings ApplicationSettings { get; init; }
 
-		public void OnGet()
-		{
-		}
+	public void OnGet()
+	{
 	}
 }

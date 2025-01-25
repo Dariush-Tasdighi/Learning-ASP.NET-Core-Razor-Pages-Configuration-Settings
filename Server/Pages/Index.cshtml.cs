@@ -1,14 +1,14 @@
-namespace Server.Pages
-{
-	public class IndexModel :
-		Microsoft.AspNetCore.Mvc.RazorPages.PageModel
-	{
-		public IndexModel() : base()
-		{
-		}
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-		public void OnGet()
-		{
-		}
+namespace Server.Pages;
+
+public class IndexModel : PageModel
+{
+	public IndexModel() : base()
+	{
+	}
+
+	public void OnGet()
+	{
 	}
 }
