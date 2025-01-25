@@ -2,8 +2,6 @@
 
 public class MyAdminSettings : object
 {
-	public static readonly string KeyName = nameof(MyAdminSettings);
-
 	public MyAdminSettings() : base()
 	{
 	}

@@ -3,19 +3,20 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 // **************************************************
 // Default
 // **************************************************
-var builder =
-	WebApplication.CreateBuilder(args);
+//var builder =
+//	WebApplication.CreateBuilder(args: args);
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-app.MapGet(pattern: "/", handler: () => "Hello World!");
+//app.MapGet(pattern: "/", handler: () => "Hello World!");
 
-app.Run();
+//app.Run();
 // **************************************************
 // **************************************************
 // **************************************************
@@ -26,14 +27,14 @@ app.Run();
 //var webApplicationOptions =
 //	new WebApplicationOptions
 //	{
-//		//EnvironmentName = Environments.Production,
 //		EnvironmentName = Environments.Development,
+//		//EnvironmentName = Environments.Staging,
+//		//EnvironmentName = Environments.Production,
 //	};
 
 //var builder =
 //	WebApplication.CreateBuilder
 //	(options: webApplicationOptions);
-//// **********
 
 //// **********
 //var password =
@@ -74,26 +75,28 @@ app.Run();
 //var webApplicationOptions =
 //	new WebApplicationOptions
 //	{
-//		EnvironmentName =
-//			Environments.Development,
+//		EnvironmentName = Environments.Development,
 //	};
 
 //var builder =
 //	WebApplication.CreateBuilder
 //	(options: webApplicationOptions);
-//// **********
 
 //// **********
 //// در نوشتن کلید بی‌دقتی می‌کنم
 //// **********
-//builder.Services.Configure<AdminSettings>
-//	(builder.Configuration.GetSection(key: "AdminSetting"));
+////builder.Services.Configure<AdminSettings>
+////	(builder.Configuration.GetSection(key: "AdminSeting"));
 
-//builder.Services.Configure<AdminSettings>
-//	(builder.Configuration.GetSection(key: "AdminSettings"));
+////builder.Services.Configure<AdminSettings>
+////	(builder.Configuration.GetSection(key: "AdminSettings"));
 
+////builder.Services.Configure<AdminSettings>
+////	(builder.Configuration.GetSection(key: AdminSettings.KeyName));
+
+//// Best Practice
 //builder.Services.Configure<AdminSettings>
-//	(builder.Configuration.GetSection(key: AdminSettings.KeyName));
+//	(builder.Configuration.GetSection(key: nameof(AdminSettings)));
 //// **********
 
 //builder.Services.AddRazorPages();
@@ -117,8 +120,7 @@ app.Run();
 //var webApplicationOptions =
 //	new WebApplicationOptions
 //	{
-//		EnvironmentName =
-//			Environments.Development,
+//		EnvironmentName = Environments.Development,
 //	};
 
 //var builder =
@@ -126,7 +128,7 @@ app.Run();
 //	(options: webApplicationOptions);
 
 //builder.Services.Configure<AdminSettings>
-//	(builder.Configuration.GetSection(key: AdminSettings.KeyName));
+//	(builder.Configuration.GetSection(key: nameof(AdminSettings)));
 
 //// **********
 //// دستور ذیل کار نمی‌کند
@@ -136,7 +138,7 @@ app.Run();
 //	new AdminSettings();
 
 //builder.Configuration.GetSection
-//	(key: AdminSettings.KeyName).Bind(instance: adminSettings);
+//	(key: nameof(AdminSettings)).Bind(instance: adminSettings);
 
 //var age =
 //	adminSettings.Age;
@@ -162,8 +164,7 @@ app.Run();
 //var webApplicationOptions =
 //	new WebApplicationOptions
 //	{
-//		EnvironmentName =
-//			Environments.Development,
+//		EnvironmentName = Environments.Development,
 //	};
 
 //var builder =
@@ -178,27 +179,27 @@ app.Run();
 
 //	// **********
 //	config.AddJsonFile
-//		("appsettings.json", optional: true, reloadOnChange: true);
+//		(path: "appsettings.json", optional: true, reloadOnChange: true);
 
 //	config.AddJsonFile
-//		($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+//		(path: $"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
 //	// **********
 
 //	// **********
 //	config.AddJsonFile
-//		("mysettings.json", optional: true, reloadOnChange: true);
+//		(path: "mysettings.json", optional: true, reloadOnChange: true);
 
 //	config.AddJsonFile
-//		($"mysettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
+//		(path: $"mysettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
 //	// **********
 //});
 
 //// **********
 //builder.Services.Configure<AdminSettings>
-//	(builder.Configuration.GetSection(key: AdminSettings.KeyName));
+//	(builder.Configuration.GetSection(key: nameof(AdminSettings)));
 
 //builder.Services.Configure<MyAdminSettings>
-//	(builder.Configuration.GetSection(key: MyAdminSettings.KeyName));
+//	(builder.Configuration.GetSection(key: nameof(MyAdminSettings)));
 //// **********
 
 //builder.Services.AddRazorPages();
@@ -218,30 +219,29 @@ app.Run();
 // **************************************************
 // 1) Learning Nested Settings
 // **************************************************
-//var webApplicationOptions =
-//	new WebApplicationOptions
-//	{
-//		EnvironmentName =
-//			Environments.Development,
-//	};
+var webApplicationOptions =
+	new WebApplicationOptions
+	{
+		EnvironmentName = Environments.Development,
+	};
 
-//var builder =
-//	WebApplication.CreateBuilder
-//	(options: webApplicationOptions);
+var builder =
+	WebApplication.CreateBuilder
+	(options: webApplicationOptions);
 
-//// **********
-//builder.Services.Configure<ApplicationSettings>
-//	(builder.Configuration.GetSection(key: ApplicationSettings.KeyName));
-//// **********
+// **********
+builder.Services.Configure<ApplicationSettings>
+	(builder.Configuration.GetSection(key: nameof(ApplicationSettings)));
+// **********
 
-//builder.Services.AddRazorPages();
+builder.Services.AddRazorPages();
 
-//var app =
-//	builder.Build();
+var app =
+	builder.Build();
 
-//app.MapRazorPages();
+app.MapRazorPages();
 
-//app.Run();
+app.Run();
 // **************************************************
 // **************************************************
 // **************************************************

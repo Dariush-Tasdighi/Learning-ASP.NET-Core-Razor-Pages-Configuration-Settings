@@ -2,8 +2,6 @@
 
 public class ApplicationSettings : object
 {
-	public static readonly string KeyName = nameof(ApplicationSettings);
-
 	public ApplicationSettings() : base()
 	{
 	}

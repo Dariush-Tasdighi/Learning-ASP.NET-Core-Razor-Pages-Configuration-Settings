@@ -27,5 +27,13 @@ public class Learn01Model : PageModel
 
 	public void OnGet()
 	{
+		AdminEmailAddress1 =
+			Configuration
+			.GetSection(key: "Admin")
+			.GetSection(key: "EmailAddress").Value;
+
+		AdminEmailAddress2 =
+			Configuration
+			.GetSection(key: "Admin:EmailAddress").Value;
 	}
 }

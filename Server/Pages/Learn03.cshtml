@@ -1,14 +1,12 @@
 ﻿@page
-
 @using Infrastructure.Settings
 @using Microsoft.Extensions.Options
-
 @model Server.Pages.Learn03Model
+
 @inject IOptions<AdminSettings> adminSettingsOptions
 
 @{
-	var adminSettings =
-		adminSettingsOptions.Value;
+	var adminSettings = adminSettingsOptions.Value;
 }
 
 <h3>
@@ -26,7 +24,7 @@ Salary: @(adminSettings.Salary)
 Full Name: @(adminSettings.FullName)
 <br />
 Favorite Colors:
-@if (adminSettings.FavoriteColors != null)
+@if (adminSettings.FavoriteColors is not null)
 {
 	foreach (var item in adminSettings.FavoriteColors)
 	{

@@ -20,7 +20,7 @@ Salary: @(Model.AdminSettings.Salary)
 Full Name: @(Model.AdminSettings.FullName)
 <br />
 Favorite Colors:
-@if (Model.AdminSettings.FavoriteColors != null)
+@if (Model.AdminSettings.FavoriteColors is not null)
 {
 	foreach (var item in Model.AdminSettings.FavoriteColors)
 	{
@@ -44,7 +44,7 @@ Salary: @(Model.MyAdminSettings.Salary)
 Full Name: @(Model.MyAdminSettings.FullName)
 <br />
 Favorite Colors:
-@if (Model.MyAdminSettings.FavoriteColors != null)
+@if (Model.MyAdminSettings.FavoriteColors is not null)
 {
 	foreach (var item in Model.MyAdminSettings.FavoriteColors)
 	{

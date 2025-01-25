@@ -7,10 +7,11 @@
 
 <hr />
 
-Age: @(Model.ApplicationSettings.ActivationKey)
+Activation Key: @(Model.ApplicationSettings.ActivationKey)
+
 <br />
 
-@if (Model.ApplicationSettings.CultureSettings == null)
+@if (Model.ApplicationSettings.CultureSettings is null)
 {
 	return;
 }
@@ -20,9 +21,12 @@ Age: @(Model.ApplicationSettings.ActivationKey)
 </h5>
 
 Default Culture: @(Model.ApplicationSettings.CultureSettings.DefaultCultureName)
+
 <br />
+
 Supported Culture Names:
-@if (Model.ApplicationSettings.CultureSettings.SupportedCultureNames != null)
+
+@if (Model.ApplicationSettings.CultureSettings.SupportedCultureNames is not null)
 {
 	foreach (var item in Model.ApplicationSettings.CultureSettings.SupportedCultureNames)
 	{

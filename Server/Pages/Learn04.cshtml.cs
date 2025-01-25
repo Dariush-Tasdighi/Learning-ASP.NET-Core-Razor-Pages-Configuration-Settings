@@ -1,6 +1,6 @@
 using Infrastructure.Settings;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Server.Pages;
 
@@ -10,16 +10,13 @@ public class Learn04Model : PageModel
 		(IOptions<AdminSettings> adminSettingsOptions,
 		IOptions<MyAdminSettings> myAdminSettingsOptions) : base()
 	{
-		AdminSettings =
-			adminSettingsOptions.Value;
-
-		MyAdminSettings =
-			myAdminSettingsOptions.Value;
+		AdminSettings = adminSettingsOptions.Value;
+		MyAdminSettings = myAdminSettingsOptions.Value;
 	}
 
-	public AdminSettings AdminSettings { get; }
+	public AdminSettings AdminSettings { get; init; }
 
-	public MyAdminSettings MyAdminSettings { get; }
+	public MyAdminSettings MyAdminSettings { get; init; }
 
 	public void OnGet()
 	{

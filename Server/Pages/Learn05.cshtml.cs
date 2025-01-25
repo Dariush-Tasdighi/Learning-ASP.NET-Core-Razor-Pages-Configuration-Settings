@@ -8,8 +8,7 @@ public class Learn05Model : PageModel
 {
 	public Learn05Model(IOptions<ApplicationSettings> applicationSettingsOptions) : base()
 	{
-		ApplicationSettings =
-			applicationSettingsOptions.Value;
+		ApplicationSettings = applicationSettingsOptions.Value;
 	}
 
 	public ApplicationSettings ApplicationSettings { get; init; }

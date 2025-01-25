@@ -8,8 +8,7 @@ public class Learn02Model : PageModel
 {
 	public Learn02Model(IOptions<AdminSettings> adminSettingsOptions) : base()
 	{
-		AdminSettings =
-			adminSettingsOptions.Value;
+		AdminSettings = adminSettingsOptions.Value;
 	}
 
 	public AdminSettings AdminSettings { get; init; }

@@ -6,7 +6,7 @@ public class AdminSettings : object
 
 	//public static readonly string KeyName = "AdminSettings";
 
-	public static readonly string KeyName = nameof(AdminSettings);
+	//public static readonly string KeyName = nameof(AdminSettings);
 
 	public AdminSettings() : base()
 	{
