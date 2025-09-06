@@ -19,9 +19,9 @@ public class Learn01Model : PageModel
 			.GetSection(key: "Admin:EmailAddress").Value;
 	}
 
-	public string AdminEmailAddress1 { get; set; }
+	public string? AdminEmailAddress1 { get; set; }
 
-	public string AdminEmailAddress2 { get; set; }
+	public string? AdminEmailAddress2 { get; set; }
 
 	private IConfiguration Configuration { get; init; }
 

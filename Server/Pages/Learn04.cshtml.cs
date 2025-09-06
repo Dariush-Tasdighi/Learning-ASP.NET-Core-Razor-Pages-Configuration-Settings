@@ -6,8 +6,7 @@ namespace Server.Pages;
 
 public class Learn04Model : PageModel
 {
-	public Learn04Model
-		(IOptions<AdminSettings> adminSettingsOptions,
+	public Learn04Model(IOptions<AdminSettings> adminSettingsOptions,
 		IOptions<MyAdminSettings> myAdminSettingsOptions) : base()
 	{
 		AdminSettings = adminSettingsOptions.Value;
@@ -15,7 +14,6 @@ public class Learn04Model : PageModel
 	}
 
 	public AdminSettings AdminSettings { get; init; }
-
 	public MyAdminSettings MyAdminSettings { get; init; }
 
 	public void OnGet()

@@ -3,10 +3,7 @@
 public class AdminSettings : object
 {
 	//public const string KeyName = "AdminSettings";
-
 	//public static readonly string KeyName = "AdminSettings";
-
-	//public static readonly string KeyName = nameof(AdminSettings);
 
 	public AdminSettings() : base()
 	{
